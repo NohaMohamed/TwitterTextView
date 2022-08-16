@@ -7,13 +7,20 @@
 
 import UIKit
 
-
+public protocol TwitterTextViewDidChange {
+    func didChange(value: String)
+}
 public class TwitterTextView: UITextView , UITextViewDelegate{
     //MARK: Outlets
+    public var twitterTextViewDidChange: TwitterTextViewDidChange?
+    
+    @IBInspectable
+    var charchtersLimit: Int = 0
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         loadNibContent()
+        self.delegate = self
     }
     private func loadNibContent() {
             let nib = UINib(nibName: "TwitterTextView", bundle: Bundle.module)
@@ -22,11 +29,12 @@ public class TwitterTextView: UITextView , UITextViewDelegate{
             addSubview(view)
     }
     public func textViewDidChange(_ textView: UITextView) {
+        twitterTextViewDidChange?.didChange(value: textView.text)
     }
     public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         return self.textLimit(existingText: textView.text,
                               newText: text,
-                              limit: 280)
+                              limit: charchtersLimit)
     }
     private func textLimit(existingText: String?,
                            newText: String,
