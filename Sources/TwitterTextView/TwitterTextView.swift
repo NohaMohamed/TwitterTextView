@@ -23,7 +23,7 @@ public class TwitterTextView: UIView , UITextViewDelegate{
         textview.delegate = self
     }
     private func loadNibContent() {
-            let nib = UINib(nibName: "TwitterTextView", bundle: Bundle.module)
+            let nib = UINib(nibName: String(describing: Self.self), bundle: Bundle.module)
             guard let view = nib.instantiate(withOwner: self, options: nil).first as? UIView else {return}
             view.frame = bounds
             addSubview(view)
