@@ -10,17 +10,17 @@ import UIKit
 public protocol TwitterTextViewDidChange {
     func didChange(value: String)
 }
-public class TwitterTextView: UITextView , UITextViewDelegate{
+public class TwitterTextView: UIView , UITextViewDelegate{
     //MARK: Outlets
     public var twitterTextViewDidChange: TwitterTextViewDidChange?
-    
+    @IBOutlet weak var textview: UITextView!
     @IBInspectable
     var charchtersLimit: Int = 0
     
     public override func awakeFromNib() {
         super.awakeFromNib()
         loadNibContent()
-        self.delegate = self
+        textview.delegate = self
     }
     private func loadNibContent() {
             let nib = UINib(nibName: "TwitterTextView", bundle: Bundle.module)

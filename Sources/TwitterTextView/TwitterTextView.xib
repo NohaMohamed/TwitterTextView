@@ -4,22 +4,39 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TwitterTextView" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TwitterTextView" customModuleProvider="target">
+            <connections>
+                <outlet property="textview" destination="RMJ-dE-HXp" id="lm3-Sf-hmw"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="6iV-ju-Gwr">
+        <view contentMode="scaleToFill" id="nsf-bX-uyM">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RMJ-dE-HXp">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="textColor" systemColor="labelColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Mug-5B-niK"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-            <color key="textColor" systemColor="labelColor"/>
-            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-            <point key="canvasLocation" x="-28" y="167"/>
-        </textView>
+            <constraints>
+                <constraint firstItem="Mug-5B-niK" firstAttribute="bottom" secondItem="RMJ-dE-HXp" secondAttribute="bottom" id="4cz-I4-WB0"/>
+                <constraint firstItem="RMJ-dE-HXp" firstAttribute="leading" secondItem="Mug-5B-niK" secondAttribute="leading" id="5TA-5o-NYx"/>
+                <constraint firstItem="RMJ-dE-HXp" firstAttribute="top" secondItem="Mug-5B-niK" secondAttribute="top" id="bWL-U1-zv3"/>
+                <constraint firstItem="Mug-5B-niK" firstAttribute="trailing" secondItem="RMJ-dE-HXp" secondAttribute="trailing" id="eHw-08-7q5"/>
+            </constraints>
+            <point key="canvasLocation" x="-560" y="363"/>
+        </view>
     </objects>
     <resources>
         <systemColor name="labelColor">
