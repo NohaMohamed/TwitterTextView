@@ -28,6 +28,9 @@ public class TwitterTextView: UIView {
             view.frame = bounds
             addSubview(view)
     }
+    public func clearTextView(){
+        textview.text = ""
+    }
     //Returns boolean indicates whether its allowed to write more text or not
     func textLimit(existingText: String?,
                            newText: String,
