@@ -15,7 +15,7 @@ public class TwitterTextView: UIView {
     public var twitterTextViewDidChange: TwitterTextViewDidChange?
     @IBOutlet weak var textview: UITextView!
     @IBInspectable
-    var charchtersLimit: Int = 0
+    public var charchtersLimit: Int = 0
     
     public override func awakeFromNib() {
         super.awakeFromNib()
