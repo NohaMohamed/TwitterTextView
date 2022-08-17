@@ -10,7 +10,7 @@ import UIKit
 public protocol TwitterTextViewDidChange {
     func didChange(value: String)
 }
-public class TwitterTextView: UIView , UITextViewDelegate{
+public class TwitterTextView: UIView {
     //MARK: Outlets
     public var twitterTextViewDidChange: TwitterTextViewDidChange?
     @IBOutlet weak var textview: UITextView!
@@ -28,6 +28,16 @@ public class TwitterTextView: UIView , UITextViewDelegate{
             view.frame = bounds
             addSubview(view)
     }
+    //Returns boolean indicates whether its allowed to write more text or not
+    func textLimit(existingText: String?,
+                           newText: String,
+                           limit: Int) -> Bool {
+        let text = existingText ?? ""
+        let isAtLimit = text.count + newText.count <= limit
+        return isAtLimit
+    }
+}
+extension TwitterTextView: UITextViewDelegate{
     public func textViewDidChange(_ textView: UITextView) {
         twitterTextViewDidChange?.didChange(value: textView.text)
     }
@@ -36,11 +46,5 @@ public class TwitterTextView: UIView , UITextViewDelegate{
                               newText: text,
                               limit: charchtersLimit)
     }
-    private func textLimit(existingText: String?,
-                           newText: String,
-                           limit: Int) -> Bool {
-        let text = existingText ?? ""
-        let isAtLimit = text.count + newText.count <= limit
-        return isAtLimit
-    }
 }
+ 

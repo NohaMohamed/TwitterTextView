@@ -2,10 +2,28 @@ import XCTest
 @testable import TwitterTextView
 
 final class TwitterTextViewTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(TwitterTextView().text, "Hello, World!")
+    var twitterTextView: TwitterTextView!
+    override func setUp() {
+        super.setUp()
+        
+        twitterTextView = TwitterTextView()
+    }
+    func test_user_exceed_limit()  {
+        // Given
+        let oldString = "Write your twitter here"
+        let newString = "Hello"
+        // When
+        let isAllowed = twitterTextView.textLimit(existingText: oldString, newText: newString, limit: 10)
+        //Then
+        XCTAssertFalse(isAllowed)
+    }
+    func test_user_canType()  {
+        // Given
+        let oldString = "Write your twitter here"
+        let newString = "Hello"
+        // When
+        let isAllowed = twitterTextView.textLimit(existingText: oldString, newText: newString, limit: 280)
+        //Then
+        XCTAssertTrue(isAllowed)
     }
 }
